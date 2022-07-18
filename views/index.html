@@ -10,11 +10,10 @@
   <title>Dashboard Template · Bootstrap v5.2</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+
+  <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-
-
-  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css"> -->
 
   <style>
     .bd-placeholder-img {
@@ -71,13 +70,12 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="../public/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
 
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">ADENASOFT</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
       data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -97,39 +95,51 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+              <a class="nav-link active" aria-current="page" href="spoon">
                 <span data-feather="home" class="align-text-bottom"></span>
-                Dashboard
+                Spoon
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file" class="align-text-bottom"></span>
-                Orders
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                Products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="mash">
                 <span data-feather="users" class="align-text-bottom"></span>
-                Customers
+                Mash
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                Reports
+              <a class="nav-link" href="lps">
+                <span data-feather="server" class="align-text-bottom"></span>
+                Lps
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="symbols">
                 <span data-feather="layers" class="align-text-bottom"></span>
-                Integrations
+                Symbols
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="instruments">
+                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                Instruments
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="volumelimit">
+                <span data-feather="maximize" class="align-text-bottom"></span>
+                Volume limit
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="leverage">
+                <span data-feather="check" class="align-text-bottom"></span>
+                Leverage
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="monitor">
+                <span data-feather="monitor" class="align-text-bottom"></span>
+                Monitor
               </a>
             </li>
           </ul>
@@ -326,7 +336,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
     integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
     crossorigin="anonymous"></script>
-  <script src="../public/dashboard.js"></script>
+  <script src="dashboard.js"></script>
   <script src="/js/bootstrap.min.js"></script>
 </body>
 
