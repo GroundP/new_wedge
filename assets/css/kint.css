@@ -1,0 +1,108 @@
+.kint {
+	background-color: #2B2B2B;
+	color: #A4B149;
+	line-height: 1.2em;
+	font-size: 12px !important;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	position: relative;
+	z-index: 99999;
+	word-break: break-all;
+	padding: 1px 20px 5px 20px;
+}
+
+.kint var {
+	color: #CC7832;
+	font-weight: normal;
+}
+
+.kint dfn {
+	color: #CC7832;
+	font-weight: bold;
+}
+
+.kint pre {
+	border-radius: 0;
+	border: 0 solid #ccc;
+	background-color: #2B2B2B !important;
+	line-height: 1.2em;
+	margin: 0 !important;
+	color: #FFFFFF !important;
+	display: block;
+	font-size: 12px !important;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	white-space: pre;
+	font-weight: normal;
+}
+
+.kint dl {
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	font-size: 12px !important;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	font-weight: normal;
+}
+
+.kint dd {
+	margin-inline-start: 40px;
+	font-size: 12px !important;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	font-weight: normal;
+}
+
+.kint dt {
+	line-height: 1.2em;
+	font-size: 12px !important;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	font-weight: normal;
+}
+
+.kint .kint-parent {
+	position: relative;
+}
+
+.kint .kint-plus {
+	width: 0;
+	height: 0;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 10px solid #A0A0A0;
+	position: absolute;
+	top: 3px;
+	left: -15px;
+	cursor: pointer;
+}
+
+.kint .kint_dd_depth_2 {
+	display: none;
+}
+
+.kint .kint_dd_depth_3 {
+	display: none;
+}
+
+.kint .var_object {
+	color: #E7C56C !important;
+	font-weight: 500 !important;
+}
+
+.kint .var_array {
+	color: #E7C56C !important;
+	font-weight: 100 !important;
+}
+
+.kint .var_integer {
+	color: #86A9C9 !important;
+}
+
+.kint .var_am {
+	color: #977591 !important;
+}
+
+.kint .var_null {
+	color: #F5F5F5 !important;
+}
+

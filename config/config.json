@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "fmlskdk!23",
+    "database": "new_wedge",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3309
+  },
+  "test": {
+    "username": "root",
+    "password": "fmlskdk!23",
+    "database": "new_wedge",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3309
+  },
+  "production": {
+    "username": "root",
+    "password": "fmlskdk!23",
+    "database": "new_wedge",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3309
+  }
+}

@@ -1,0 +1,49 @@
+ul li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+fieldset {
+    border-radius: 10px;
+}
+
+.itens {
+    padding: 0px 0px 0px 20px;
+}
+
+.darkMode {
+    background-color: #4F4F4F !important;
+}
+
+.darkMode2 {
+    color: #FFFF00 !important;
+}
+
+.darkMode3 {
+    color: #FFF !important;
+}
+
+.float {
+    text-align: left;
+}
+
+.fontspan {
+    font-size: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.space {
+    margin-bottom: 10px;
+}
+
+.back {
+    color: #363636;
+    font-weight: bold;
+}
