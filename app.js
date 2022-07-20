@@ -3,7 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 
-const { sequelize } = require('./models');
+const { sequelize, Spoon } = require('./models');
 
 const app = express();
 //app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS  
@@ -12,18 +12,18 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'html')
- nunjucks.configure('views', {
-     express: app,
-     watch: true,
- });
+nunjucks.configure('views', {
+    express: app,
+    watch: true,
+});
 
-sequelize.sync({force:false})
- .then(()=> {
-     console.log('success to connect db');
- })
- .catch((err) => {
-     console.error(err);
- })
+sequelize.sync({ force: false })
+    .then(() => {
+        console.log('success to connect db');
+    })
+    .catch((err) => {
+        console.error(err);
+    })
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,9 +32,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res, next) => {
     //res.send('Hello, Express');
-    res.sendFile(path.join(__dirname, 'views/index2.html'));
+    //res.sendFile(path.join(__dirname, 'views/index2.html'));
+
+    try {
+        // const posts = await Post.findAll({
+        //     include: {
+        //         model: User,
+        //         attributes: ['id', 'nick'],
+        //     },
+        //     order: [['createdAt', 'DESC']],
+        // });
+        res.render('main', {
+            title: 'new_wedge',
+            spoons: Spoon,
+        });
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
 });
 
 app.use((req, res, next) => {
