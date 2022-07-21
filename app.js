@@ -37,16 +37,12 @@ app.get('/', async (req, res, next) => {
     //res.sendFile(path.join(__dirname, 'views/index2.html'));
 
     try {
-        // const posts = await Post.findAll({
-        //     include: {
-        //         model: User,
-        //         attributes: ['id', 'nick'],
-        //     },
-        //     order: [['createdAt', 'DESC']],
-        // });
+        const spoons = await Spoon.findAll({
+            //order: [['createdAt', 'DESC']],
+        });
         res.render('main', {
             title: 'new_wedge',
-            spoons: Spoon,
+            spoonValues: spoons,
         });
     } catch (err) {
         console.error(err);
