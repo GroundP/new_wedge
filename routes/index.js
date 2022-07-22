@@ -1,5 +1,5 @@
 const express = require('express');
-const {Spoon} = require('../models');
+const { Spoon } = require('../models');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
         const spoons = await Spoon.findAll({
             //order: [['createdAt', 'DESC']],
         });
-        res.render('index2', {
+        res.render('new_temp', {
             title: 'new_wedge',
             spoonValues: spoons,
         });
