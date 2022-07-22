@@ -3,7 +3,10 @@ const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 
-const { sequelize, Spoon } = require('./models');
+const { sequelize } = require('./models');
+const indexRouter = require('./routes');
+const spoonRouter = require('./routes/spoon');
+const mashRouter = require('./routes/mash');
 
 const app = express();
 //app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS  
@@ -25,30 +28,15 @@ sequelize.sync({ force: false })
         console.error(err);
     })
 
+app.use('/', indexRouter);
+app.use('/spoon', spoonRouter);
+app.use('/mash', mashRouter);
+
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-
-app.get('/', async (req, res, next) => {
-    //res.send('Hello, Express');
-    //res.sendFile(path.join(__dirname, 'views/index2.html'));
-
-    try {
-        const spoons = await Spoon.findAll({
-            //order: [['createdAt', 'DESC']],
-        });
-        res.render('main', {
-            title: 'new_wedge',
-            spoonValues: spoons,
-        });
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
-});
 
 app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
