@@ -30,6 +30,8 @@
           </tr>
         </thead>
         <tbody>
+        {% for symbol in symbolValues %}
+
           <tr scope="row" class="active">
             <td>
               <label class="control control--checkbox">
@@ -37,28 +39,26 @@
                 <div class="control__indicator"></div>
               </label>
             </td>
-            <td>EURUSD</td>
+            <td>{{symbol.lp_symbol}}</td>
             <td class="pl-0">
               <div class="d-flex align-items-center">
-                <a href="#" class="name">James Yates</a>
+                <a href="#" class="name">{{symbol.lp}}</a>
               </div>
             </td>
-            <td>
-              Web Designer
-              <small class="d-block">Far far away, behind the word mountains</small>
-            </td>
-            <td>+63 983 0962 971</td>
-            <td>NY University</td>
+            <td>{{symbol.contract_size}}</td>
+            <td>{{symbol.multiplier}}</td>
+            <td>{{symbol.broker_symbol}}</td>
+            <td>{{symbol.digits}}</td>
             <td>
               <label class="custom-control ios-switch">
                 <input type="checkbox" class="ios-switch-control-input" checked="">
                 <span class="ios-switch-control-indicator"></span>
               </label>
             </td>
-
           </tr>
+          {% endfor %}
 
-          <tr class="active">
+          <!-- <tr class="active">
 
             <td>
               <label class="control control--checkbox">
@@ -237,7 +237,7 @@
                 <span class="ios-switch-control-indicator"></span>
               </label>
             </td>
-          </tr>
+          </tr> -->
 
         </tbody>
       </table>

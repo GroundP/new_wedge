@@ -7,6 +7,7 @@ const { sequelize } = require('./models');
 const indexRouter = require('./routes');
 const spoonRouter = require('./routes/spoon');
 const mashRouter = require('./routes/mash');
+const symbolRouter = require('./routes/symbol');
 
 const app = express();
 //app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS  
@@ -31,6 +32,7 @@ sequelize.sync({ force: false })
 app.use('/', indexRouter);
 app.use('/spoon', spoonRouter);
 app.use('/mash', mashRouter);
+app.use('/symbol', symbolRouter);
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));

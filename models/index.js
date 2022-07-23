@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const Spoon = require('./spoon');
 const Mash = require('./mash');
+const Symbol = require('./symbol');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
@@ -11,8 +12,10 @@ db.sequelize = sequelize;
 
 db.Spoon = Spoon;
 db.Mash = Mash;
+db.Symbol = Symbol;
 
 Spoon.init(sequelize);
 Mash.init(sequelize);
+Symbol.init(sequelize);
 
 module.exports = db;
