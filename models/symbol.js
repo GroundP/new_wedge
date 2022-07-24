@@ -13,7 +13,7 @@ module.exports = class Symbol extends Sequelize.Model {
             },
             lp_cd: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
             },
             contract_size: {
                 type: Sequelize.DOUBLE,

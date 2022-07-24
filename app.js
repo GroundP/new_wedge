@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
+const bodyParser = require('body-parser');
 
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
@@ -29,16 +30,17 @@ sequelize.sync({ force: false })
         console.error(err);
     })
 
-app.use('/', indexRouter);
-app.use('/spoon', spoonRouter);
-app.use('/mash', mashRouter);
-app.use('/symbol', symbolRouter);
-
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/', indexRouter);
+app.use('/spoon', spoonRouter);
+app.use('/mash', mashRouter);
+app.use('/symbol', symbolRouter);
 
 app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);

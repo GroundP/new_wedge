@@ -61,11 +61,6 @@ h2 {
         background: #dc3545;
         opacity: 0;
         visibility: hidden; }
-    .custom-table tbody tr.active {
-      opacity: .4; }
-      .custom-table tbody tr.active .name:before {
-        opacity: 1;
-        visibility: visible; }
   .custom-table .td-box-wrap {
     padding: 0; }
   .custom-table .box {

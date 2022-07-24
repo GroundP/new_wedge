@@ -2,7 +2,39 @@
 
 {% block content %}
 <div class="content">
+  <div class="container">
+    <h2 class="mb-3">ADD</h2>
 
+    <tbody>
+      <form action="/symbol/add" method="post">
+        <div class="input-group">
+                <label for="symbol-lp_symbol">Symbol</label>
+                <input id="symbol-lp_symbol" type="text" name="lp_symbol"></div>
+              <div class="input-group">
+                <label for="symbol-lp">Lp</label>
+                <input id="symbol-lp" type="text" name="lp"></div>
+              <div class="input-group">
+                <label for="symbol-contractSize">Contract Size</label>
+                <input id="symbol-contractSize" type="double" name="contract_size">
+              </div>
+              <div class="input-group">
+                <label for="symbol-multiplier">Multiplier</label>
+                <input id="symbol-multiplier" type="text" name="multiplier">
+              </div>
+              <div class="input-group">
+                <label for="symbol-brokerSymbol">Broker symbol</label>
+                <input id="symbol-brokerSymbol" type="text" name="broker_symbol">
+              </div>
+              <div class="input-group">
+                <label for="symbol-digits">Digits</label>
+                <input id="symbol-digits" type="integer" name="digits">
+              </div>
+        <button id="symbol-btn" type="submit" class="btn">Submit</button>
+      </form>
+    </tbody>
+  </div>
+
+<div class="content">
   <div class="container">
     <h2 class="mb-3">Symbols</h2>
     <div class="table-responsive">
@@ -30,7 +62,7 @@
           </tr>
         </thead>
         <tbody>
-        {% for symbol in symbolValues %}
+          {% for symbol in symbolValues %}
 
           <tr scope="row" class="active">
             <td>
@@ -51,13 +83,15 @@
             <td>{{symbol.digits}}</td>
             <td>
               <label class="custom-control ios-switch">
-                <input type="checkbox" class="ios-switch-control-input" checked="">
-                <span class="ios-switch-control-indicator"></span>
+                <input type="checkbox" class="ios-switch-control-input">
+                <span class="ios-switch-control-indicator edit_symbol" 
+                data-lp_symbol="{{ symbol.lp_symbol }}" data-lp="{{ symbol.lp }}"
+                data-contract_size="{{ symbol.contract_size }}" data-multiplier="{{ symbol.multiplier }}"
+                data-broker_symbol="{{ symbol.broker_symbol }}" data-digits="{{ symbol.digits }}"></span>
               </label>
             </td>
           </tr>
           {% endfor %}
-
           <!-- <tr class="active">
 
             <td>
@@ -242,9 +276,6 @@
         </tbody>
       </table>
     </div>
-
-
   </div>
-
 </div>
 {% endblock %}
