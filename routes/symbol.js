@@ -42,7 +42,7 @@ router.post('/add', async (req, res, next) => {
             broker_symbol,
             digits
         });
-        return res.redirect('/');
+        return res.redirect('/symbol');
     } catch (error) {
         console.error(error);
         return next(error);

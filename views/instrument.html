@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="content">
+  <div class="container">
+    <h2>ADD</h2>
+    <tbody>
+      <form action="/instrument/add" method="post">
+        <div class="input-group">
+                <label>Broker symbol</label>
+                <input id="instrument-lp_instrument" type="text" name="BrokerSymbol"></div>
+              <div class="input-group">
+                <label>Instrument</label>
+                <input id="instrument-lp" type="text" name="InstrumentName"></div>
+              <div class="input-group">
+                <label>Price Markup</label>
+                <input id="instrument-contractSize" type="double" name="PriceMarkup">
+              </div>
+              <div class="input-group">
+                <label>Order Markup</label>
+                <input id="instrument-multiplier" type="text" name="OrderMarkup">
+              </div>
+              <div class="input-group">
+                <label>Min. Volume</label>
+                <input id="instrument-brokerSymbol" type="text" name="MinVolume">
+              </div>
+              <div class="input-group">
+                <label>Max. spread</label>
+                <input id="instrument-digits" type="integer" name="MaxSpread">
+              </div>
+              <div class="input-group">
+                <label>Min. spread</label>
+                <input id="instrument-digits" type="integer" name="MinSpread">
+              </div>
+        <button id="instrument-btn" type="submit" class="btn">Submit</button>
+      </form>
+    </tbody>
+  </div>
+
+<div class="content">
+  <div class="container">
+    <h2 class="mb-3">Instruments</h2>
+    <div class="table-responsive">
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+            <th scope="col">
+              <label class="control control--checkbox">
+                <input type="checkbox" class="js-check-all" />
+                <div class="control__indicator"></div>
+              </label>
+            </th>
+            <th scope="col">Broker Symbol</th>
+            <th scope="col">Instrument</th>
+            <th scope="col">Price Markup</th>
+            <th scope="col">Order Markup</th>
+            <th scope="col">Min. Volume</th>
+            <th scope="col">Max. Spread</th>
+            <th scope="col">Min. Spread</th>
+            <th scope="col">
+              <label class="custom-control ios-switch" style="position: relative; top: 10px;">
+                <input type="checkbox" class="ios-switch-control-input js-ios-switch-all">
+                <span class="ios-switch-control-indicator"></span>
+              </label>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for instrument in instrumentValues %}
+
+          <tr scope="row" class="active">
+            <td>
+              <label class="control control--checkbox">
+                <input type="checkbox" />
+                <div class="control__indicator"></div>
+              </label>
+            </td>
+            <td>{{instrument.instrument}}</td>
+            <td class="pl-0">
+              <div class="d-flex align-items-center">
+                <a href="#" class="name">{{instrument.instrument}}</a>
+              </div>
+            </td>
+            <td>{{instrument.price_markup_point}}</td>
+            <td>{{instrument.order_markup_point}}</td>
+            <td>{{instrument.min_volume}}</td>
+            <td>{{instrument.max_spread}}</td>
+            <td>{{instrument.min_spread}}</td>
+            <td>
+              <label class="custom-control ios-switch">
+                <input type="checkbox" class="ios-switch-control-input">
+                <span class="ios-switch-control-indicator edit_instrument" 
+                data-lp_instrument="{{ instrument.instrument }}" data-lp="{{ instrument.instrument }}"
+                data-contract_size="{{ instrument.price_markup_point }}" data-multiplier="{{ instrument.order_markup_point }}"
+                data-broker_instrument="{{ instrument.min_volume }}" data-digits="{{ instrument.max_spread }}"></span>
+              </label>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

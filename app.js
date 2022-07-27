@@ -9,6 +9,7 @@ const indexRouter = require('./routes');
 const spoonRouter = require('./routes/spoon');
 const mashRouter = require('./routes/mash');
 const symbolRouter = require('./routes/symbol');
+const instrumentRouter = require('./routes/instrument');
 
 const app = express();
 //app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS  
@@ -41,6 +42,7 @@ app.use('/', indexRouter);
 app.use('/spoon', spoonRouter);
 app.use('/mash', mashRouter);
 app.use('/symbol', symbolRouter);
+app.use('/instrument', instrumentRouter);
 
 app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
