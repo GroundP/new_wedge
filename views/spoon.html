@@ -3,39 +3,61 @@
 {% block content %}
 <p></p>
 <h2>Spoon Configuration</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th scope="col">mkd_log_level</th>
-                <th scope="col">mkd_log_prices</th>
-                <th scope="col">spread count</th>
-                <th scope="col">spread ratio</th>
-                <th scope="col">spread interval</th>
-                <th scope="col">max spread factor</th>
-                <th scope="col">min spread factor</th>
-                <th scope="col">service host</th>
-                <th scope="col">service port</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for spoon in spoonValues %}
-              <tr>
-                <td>{{spoon.mkd_log_level}}</td>
-                <td>{{spoon.mkd_log_prices}}</td>
-                <td>{{spoon.mkd_spread_count}}</td>
-                <td>{{spoon.mkd_spread_ratio}}</td>
-                <td>{{spoon.mkd_spread_interval}}</td>
-                <td>{{spoon.mkd_max_spread_factor}}</td>
-                <td>{{spoon.mkd_min_spread_factor}}</td>
-                <td>{{spoon.service_host}}</td>
-                <td>{{spoon.service_port}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">mkd_log_level</th>
+        <th scope="col">mkd_log_prices</th>
+        <th scope="col">spread count</th>
+        <th scope="col">spread ratio</th>
+        <th scope="col">spread interval</th>
+        <th scope="col">max spread factor</th>
+        <th scope="col">min spread factor</th>
+        <th scope="col">service host</th>
+        <th scope="col">service port</th>
+      </tr>
+    </thead>
+    {% if edit_flag %}
+    <form id="spoon-finish-form" method="post" action="/spoon">
+      <tbody>
+        {% for spoon in spoonValues %}
+        <tr>
+          <td><input type="text" name="mkd_log_level" value="{{spoon.mkd_log_level}}" /></td>
+          <td><input type="checkbox" name="mkd_log_price" value="{{spoon.mkd_log_prices}}" id="" /></td>
+          <td><input type="number" name="mkd_spread_count" value="{{spoon.mkd_spread_count}}" /></td>
+          <td><input type="number" name="mkd_spread_ratio" value="{{spoon.mkd_spread_ratio}}" id="" /></td>
+          <td><input type="number" name="mkd_spread_interval" value="{{spoon.mkd_spread_interval}}" id="" /></td>
+          <td><input type="number" name="mkd_max_spread_factor" value="{{spoon.mkd_max_spread_factor}}" id="" /></td>
+          <td><input type="number" name="mkd_min_spread_factor" value="{{spoon.mkd_min_spread_factor}}" id="" /></td>
+          <td><input type="text" name="service_host" value="{{spoon.service_host}}" id="" /></td>
+          <td><input type="number" name="service_port" value="{{spoon.service_port}}" id="" /></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <button class="btn" name="spoon-main">OK</button>
+    </form>
+    {% else %}
+    <tbody>
+      {% for spoon in spoonValues %}
+      <tr>
+        <td>{{spoon.mkd_log_level}}</td>
+        <td>{{spoon.mkd_log_prices}}</td>
+        <td>{{spoon.mkd_spread_count}}</td>
+        <td>{{spoon.mkd_spread_ratio}}</td>
+        <td>{{spoon.mkd_spread_interval}}</td>
+        <td>{{spoon.mkd_max_spread_factor}}</td>
+        <td>{{spoon.mkd_min_spread_factor}}</td>
+        <td>{{spoon.service_host}}</td>
+        <td>{{spoon.service_port}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <a class="btn" href="/spoon/edit">EDIT</a>
+    <!-- <form id="spoon-edit-form" method="post" action="/spoon/edit">
+      <button class="btn">수정</button>
+    </form> -->
+    {% endif %}
+  </table>
+</div>
 {% endblock %}
-<!-- </main> -->
-    <!-- </div>
-  </div> -->
