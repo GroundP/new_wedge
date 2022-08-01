@@ -27,6 +27,9 @@ router.post('/', async (req, res, next) => {
         mkd_spread_interval,
         mkd_max_spread_factor,
         mkd_min_spread_factor,
+        ord_log_level,
+        ord_duration,
+        ord_cancel_noprice,
         service_host,
         service_port
     } = req.body;
@@ -44,6 +47,9 @@ router.post('/', async (req, res, next) => {
             mkd_spread_interval,
             mkd_max_spread_factor,
             mkd_min_spread_factor,
+            ord_log_level,
+            ord_duration,
+            ord_cancel_noprice,
             service_host,
             service_port
         }, { where: { cd: 1 } });

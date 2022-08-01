@@ -9,11 +9,11 @@ module.exports = class Spoon extends Sequelize.Model {
                 unique: true,
             },
             mkd_log_level: {
-                type: Sequelize.STRING(225),
+                type: Sequelize.STRING(45),
                 allowNull: false,
             },
             mkd_log_prices: {
-                type: Sequelize.STRING(225),
+                type: Sequelize.STRING(45),
                 allowNull: false,
             },
             mkd_spread_count: {
@@ -34,6 +34,18 @@ module.exports = class Spoon extends Sequelize.Model {
             },
             mkd_min_spread_factor: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            ord_log_level: {
+                type: Sequelize.STRING(45),
+                allowNull: false,
+            },
+            ord_duration: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            ord_cancel_noprice: {
+                type: Sequelize.STRING(45),
                 allowNull: false,
             },
             service_host: {
