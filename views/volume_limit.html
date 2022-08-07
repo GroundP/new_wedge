@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+  <br>
+  <div class="container">
+    <h2 class="mb-3">ADD</h2>
+    <br>
+    <table class="table table-striped table-sm">
+      <thead>
+        <th scope="col">Category</th>
+        <th scope="col">Target list</th>
+        <th scope="col">Max. Volume(micro)</th>
+        <th scope="col">/</th>
+      </thead>
+      <tbody>
+        <form action="/volume_limit/add" method="post">
+          <div class="input-group">
+            <tr>
+              <td><input id="vl-category" type="text" name="category" size="10" maxlength="10"></td>
+              <td><input id="vl-target_list" type="text" name="target_list" size="10" maxlength="50"></td>
+              <td><input id="vl-limit" type="number" name="volume_limit" size="5"></td>
+              <td><button id="vl-btn" type="submit" class="badge badge-success">Submit</button></td>
+            </tr>
+          </div>
+        </form>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <br><br>
+  <div class="container">
+    <h2 class="mb-3">Volume Limit</h2>
+    <div class="table-responsive">
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+            <th scope="col">
+              <label class="control control--checkbox">
+                <input type="checkbox" class="js-check-all" />
+                <div class="control__indicator"></div>
+              </label>
+            </th>
+            <th scope="col">ID</th>
+            <th scope="col">Category</th>
+            <th scope="col">Target list</th>
+            <th scope="col">Max. Volume(micro)</th>
+            <th scope="col">
+              <label class="custom-control ios-switch" style="position: relative; top: 10px;">
+                <input type="checkbox" class="ios-switch-control-input js-ios-switch-all">
+                <span class="ios-switch-control-indicator"></span>
+              </label>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for vl in volumeLimitValues %}
+
+          <tr scope="row" class="active">
+            <td>
+              <label class="control control--checkbox">
+                <input type="checkbox" />
+                <div class="control__indicator"></div>
+              </label>
+            </td>
+            <td>{{vl.id}}</td>
+            <td class="pl-0">
+              <div class="d-flex align-items-center">
+                <a href="#" class="name">{{vl.category}}</a>
+              </div>
+            </td>
+            <td>{{vl.target_list}}</td>
+            <td>{{vl.volume_limit}}</td>
+            <td>
+              <label class="custom-control ios-switch">
+                <input type="checkbox" class="ios-switch-control-input">
+                <span class="ios-switch-control-indicator edit_symbol" data-lp_symbol="{{ symbol.lp_symbol }}"
+                  data-lp="{{ symbol.lp }}" data-contract_size="{{ symbol.contract_size }}"
+                  data-multiplier="{{ symbol.multiplier }}" data-broker_symbol="{{ symbol.broker_symbol }}"
+                  data-digits="{{ symbol.digits }}"></span>
+              </label>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

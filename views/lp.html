@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+  <br>
+  <div class="container">
+    <h2 class="mb-3">ADD</h2>
+    <br>
+    <table class="table table-striped table-sm">
+      <thead>
+        <th scope="col">LP Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">CSV Provide</th>
+        <th scope="col">/</th>
+      </thead>
+      <tbody>
+        <form action="/lp/add" method="post">
+          <div class="input-group">
+            <tr>
+              <td><input type="text" name="lp_name" size="10" maxlength="10"></td>
+              <td><input type="text" name="description" size="10" maxlength="30"></td>
+              <td><input type="number" name="csv_provide" size="5"></td>
+              <td><button id="vl-btn" type="submit" class="badge badge-success">Submit</button></td>
+            </tr>
+          </div>
+        </form>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <br><br>
+  <div class="container">
+    <h2 class="mb-3">LPs</h2>
+    <div class="table-responsive">
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+            <th scope="col">
+              <label class="control control--checkbox">
+                <input type="checkbox" class="js-check-all" />
+                <div class="control__indicator"></div>
+              </label>
+            </th>
+            <th scope="col">ID</th>
+            <th scope="col">LP Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">CSV Provide</th>
+            <th scope="col">
+              <label class="custom-control ios-switch" style="position: relative; top: 10px;">
+                <input type="checkbox" class="ios-switch-control-input js-ios-switch-all">
+                <span class="ios-switch-control-indicator"></span>
+              </label>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lp in lpValues %}
+
+          <tr scope="row" class="active">
+            <td>
+              <label class="control control--checkbox">
+                <input type="checkbox" />
+                <div class="control__indicator"></div>
+              </label>
+            </td>
+            <td>{{lp.id}}</td>
+            <td class="pl-0">
+              <div class="d-flex align-items-center">
+                <a href="#" class="name">{{lp.lp_name}}</a>
+              </div>
+            </td>
+            <td>{{lp.description}}</td>
+            <td>{{lp.csv_provide}}</td>
+            <td>
+              <label class="custom-control ios-switch">
+                <input type="checkbox" class="ios-switch-control-input">
+                <span class="ios-switch-control-indicator edit_symbol" data-lp_symbol="{{ symbol.lp_symbol }}"
+                  data-lp="{{ symbol.lp }}" data-contract_size="{{ symbol.contract_size }}"
+                  data-multiplier="{{ symbol.multiplier }}" data-broker_symbol="{{ symbol.broker_symbol }}"
+                  data-digits="{{ symbol.digits }}"></span>
+              </label>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

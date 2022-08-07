@@ -8,8 +8,10 @@ const { sequelize } = require('./models');
 const indexRouter = require('./routes');
 const spoonRouter = require('./routes/spoon');
 const mashRouter = require('./routes/mash');
+const lpRouter = require('./routes/lp');
 const symbolRouter = require('./routes/symbol');
 const instrumentRouter = require('./routes/instrument');
+const volumeLimitRouter = require('./routes/volume_limit');
 
 const app = express();
 //app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS  
@@ -41,8 +43,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 app.use('/spoon', spoonRouter);
 app.use('/mash', mashRouter);
+app.use('/lp', lpRouter);
 app.use('/symbol', symbolRouter);
 app.use('/instrument', instrumentRouter);
+app.use('/volume_limit', volumeLimitRouter);
 
 app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);

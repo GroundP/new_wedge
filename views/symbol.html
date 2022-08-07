@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="content">
+<div>
+  <br>
   <div class="container">
     <h2 class="mb-3">ADD</h2>
     <br>
@@ -19,13 +20,13 @@
         <form action="/symbol/add" method="post">
           <div class="input-group">
             <tr>
-              <td><input id="symbol-lp_symbol" type="text" name="lp_symbol"></td>
-              <td><input id="symbol-lp" type="text" name="lp"></td>
-              <td><input id="symbol-contractSize" type="double" name="contract_size"></td>
-              <td><input id="symbol-multiplier" type="text" name="multiplier"></td>
-              <td><input id="symbol-brokerSymbol" type="text" name="broker_symbol"></td>
-              <td><input id="symbol-digits" type="integer" name="digits"></td>
-              <td><button id="symbol-btn" type="submit" class="btn">Submit</button></td>
+              <td><input id="symbol-lp_symbol" type="text" name="lp_symbol" size="10" maxlength="10"></td>
+              <td><input id="symbol-lp" type="text" name="lp" size="10" maxlength="15"></td>
+              <td><input id="symbol-contractSize" type="number" name="contract_size" size="5"></td>
+              <td><input id="symbol-multiplier" type="text" name="multiplier" size="10" maxlength="10"></td>
+              <td><input id="symbol-brokerSymbol" type="text" name="broker_symbol" size="10" maxlength="10"></td>
+              <td><input id="symbol-digits" type="number" name="digits" size="5"></td>
+              <td><button id="symbol-btn" type="submit" class="badge badge-success">Submit</button></td>
             </tr>
           </div>
         </form>
@@ -34,7 +35,8 @@
   </div>
 </div>
 
-<div class="content">
+<div>
+  <br><br>
   <div class="container">
     <h2 class="mb-3">Symbols</h2>
     <div class="table-responsive">
