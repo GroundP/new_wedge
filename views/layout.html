@@ -49,49 +49,51 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active"  href="spoon">
+                            <a class="nav-link {% if section_name == 'spoon' %} active {% endif %}" href="spoon">
                                 <span data-feather="home" class="align-text-bottom"></span>
                                 Spoon
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="mash">
+                            <a class="nav-link {% if section_name == 'mash' %} active {% endif %}" href="mash">
                                 <span data-feather="users" class="align-text-bottom"></span>
                                 Mash
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="lp">
+                            <a class="nav-link {% if section_name == 'lp' %} active {% endif %}" href="lp">
                                 <span data-feather="server" class="align-text-bottom"></span>
                                 Lps
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="symbol">
+                            <a class="nav-link {% if section_name == 'symbol' %} active {% endif %}" href="symbol">
                                 <span data-feather="layers" class="align-text-bottom"></span>
                                 Symbols
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="instrument">
+                            <a class="nav-link {% if section_name == 'instrument' %} active {% endif %}" href="instrument">
                                 <span data-feather="bar-chart-2" class="align-text-bottom"></span>
                                 Instruments
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="volume_limit">
+                            <a class="nav-link {% if section_name == 'volume_limit' %} active {% endif %}" href="volume_limit">
                                 <span data-feather="maximize" class="align-text-bottom"></span>
                                 Volume limit
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="leverage">
+                            <a class="nav-link {% if section_name == 'leverage' %} active {% endif %}" href="leverage">
+                                <a class="nav-link" href="leverage">
                                 <span data-feather="check" class="align-text-bottom"></span>
                                 Leverage
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="monitor">
+                            <a class="nav-link {% if section_name == 'monitor' %} active {% endif %}" href="monitor">
+                                <a class="nav-link" href="monitor">
                                 <span data-feather="monitor" class="align-text-bottom"></span>
                                 Monitor
                             </a>

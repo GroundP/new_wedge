@@ -1,44 +1,43 @@
 {% extends 'layout.html' %}
+{% set section_name = 'instrument' %}
 
 {% block content %}
-<div class="content">
+  <br>
   <div class="container">
     <h2>ADD</h2>
-    <tbody>
-      <form action="/instrument/add" method="post">
-        <div class="input-group">
-                <label>Broker symbol</label>
-                <input id="instrument-lp_instrument" type="text" name="BrokerSymbol"></div>
-              <div class="input-group">
-                <label>Instrument</label>
-                <input id="instrument-lp" type="text" name="InstrumentName"></div>
-              <div class="input-group">
-                <label>Price Markup</label>
-                <input id="instrument-contractSize" type="double" name="PriceMarkup">
-              </div>
-              <div class="input-group">
-                <label>Order Markup</label>
-                <input id="instrument-multiplier" type="text" name="OrderMarkup">
-              </div>
-              <div class="input-group">
-                <label>Min. Volume</label>
-                <input id="instrument-brokerSymbol" type="text" name="MinVolume">
-              </div>
-              <div class="input-group">
-                <label>Max. spread</label>
-                <input id="instrument-digits" type="integer" name="MaxSpread">
-              </div>
-              <div class="input-group">
-                <label>Min. spread</label>
-                <input id="instrument-digits" type="integer" name="MinSpread">
-              </div>
-        <button id="instrument-btn" type="submit" class="btn">Submit</button>
-      </form>
-    </tbody>
+    <br>
+    <table class="table table-striped table-sm">
+      <thead>
+        <th scope="col">Broker symbol</th>
+        <th scope="col">Instrument</th>
+        <th scope="col">Price Markup</th>
+        <th scope="col">Order Markup</th>
+        <th scope="col">Min. Volume</th>
+        <th scope="col">Max. spread</th>
+        <th scope="col">Min. spread</th>
+        <th scope="col">/</th>
+      </thead>
+      <tbody>
+        <form action="/instrument/add" method="post">
+          <div class="input-group">
+            <tr>
+              <td><input type="text" name="BrokerSymbol" size="10" maxlength="10"></td>
+              <td><input type="text" name="InstrumentName" size="10" maxlength="15"></td>
+              <td><input type="number" name="PriceMarkup" size="5"></td>
+              <td><input type="number" name="OrderMarkup" size="5"></td>
+              <td><input type="number" name="MinVolume" maxlength="5"></td>
+              <td><input type="number" name="MaxSpread" size="5"></td>
+              <td><input type="number" name="MinSpread" size="5"></td>
+              <td><button type="submit" class="badge badge-success">Submit</button></td>
+            </tr>
+          </div>
+        </form>
+      </tbody>
+    </table>
   </div>
 
-<div class="content">
-  <div class="container">
+    <br>
+    <div class="container">
     <h2 class="mb-3">Instruments</h2>
     <div class="table-responsive">
       <table class="table table-striped custom-table">
@@ -101,5 +100,4 @@
       </table>
     </div>
   </div>
-</div>
 {% endblock %}

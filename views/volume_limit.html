@@ -1,32 +1,31 @@
 {% extends 'layout.html' %}
+{% set section_name = 'volume_limit' %}
 
 {% block content %}
-<div>
+<div class="container">
   <br>
-  <div class="container">
-    <h2 class="mb-3">ADD</h2>
-    <br>
-    <table class="table table-striped table-sm">
-      <thead>
-        <th scope="col">Category</th>
-        <th scope="col">Target list</th>
-        <th scope="col">Max. Volume(micro)</th>
-        <th scope="col">/</th>
-      </thead>
-      <tbody>
-        <form action="/volume_limit/add" method="post">
-          <div class="input-group">
-            <tr>
-              <td><input id="vl-category" type="text" name="category" size="10" maxlength="10"></td>
-              <td><input id="vl-target_list" type="text" name="target_list" size="10" maxlength="50"></td>
-              <td><input id="vl-limit" type="number" name="volume_limit" size="5"></td>
-              <td><button id="vl-btn" type="submit" class="badge badge-success">Submit</button></td>
-            </tr>
-          </div>
-        </form>
-      </tbody>
-    </table>
-  </div>
+  <h2 class="mb-3">ADD</h2>
+  <br>
+  <table class="table table-striped table-sm">
+    <thead>
+      <th scope="col">Category</th>
+      <th scope="col">Target list</th>
+      <th scope="col">Max. Volume(micro)</th>
+      <th scope="col">/</th>
+    </thead>
+    <tbody>
+      <form action="/volume_limit/add" method="post">
+        <div class="input-group">
+          <tr>
+            <td><input id="vl-category" type="text" name="category" size="10" maxlength="10"></td>
+            <td><input id="vl-target_list" type="text" name="target_list" size="10" maxlength="50"></td>
+            <td><input id="vl-limit" type="number" name="volume_limit" size="5"></td>
+            <td><button id="vl-btn" type="submit" class="badge badge-success">Submit</button></td>
+          </tr>
+        </div>
+      </form>
+    </tbody>
+  </table>
 </div>
 
 <div>
