@@ -27,4 +27,8 @@ Symbol.init(sequelize);
 Instrument.init(sequelize);
 VolimeLimit.init(sequelize);
 
+Lp.associate(db);
+Symbol.associate(db);
+Instrument.associate(db);
+
 module.exports = db;

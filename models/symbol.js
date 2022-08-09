@@ -36,10 +36,15 @@ module.exports = class Symbol extends Sequelize.Model {
             timestamps: true,
             underscored: false,
             modelName: 'Symbol',
-            tableName: 'symbol',
+            tableName: 'symbols',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
         });
+    }
+
+    static associate(db) {
+        db.Symbol.hasMany(db.Lp);
+        db.Symbol.belongsTo(db.Instrument);
     }
 }

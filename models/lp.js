@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class VolumeLimit extends Sequelize.Model {
+module.exports = class Lp extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             lp_name: {
@@ -25,5 +25,9 @@ module.exports = class VolumeLimit extends Sequelize.Model {
             charset: 'utf8',
             collate: 'utf8_general_ci',
         });
+    }
+
+    static associate(db) {
+        db.Lp.belongsTo(db.Symbol);
     }
 }

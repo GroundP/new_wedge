@@ -47,7 +47,7 @@ module.exports = class Instrument extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             underscored: false,
             modelName: 'Instrument',
             tableName: 'instruments',
@@ -55,5 +55,9 @@ module.exports = class Instrument extends Sequelize.Model {
             charset: 'utf8',
             collate: 'utf8_general_ci',
         });
+    }
+
+    static associate(db) {
+        db.Instrument.hasMany(db.Symbol);
     }
 }
