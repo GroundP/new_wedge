@@ -28,6 +28,6 @@ module.exports = class Lp extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Lp.belongsTo(db.Symbol);
+        db.Lp.hasMany(db.Symbol);
     }
 }

@@ -3,19 +3,6 @@ const Sequelize = require('sequelize');
 module.exports = class Instrument extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            cd: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                primaryKey: true,
-            },
-            symbol_cd: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-            },
-            symbol_config_id: {
-                type: Sequelize.INTEGER,
-                allowNull: true,
-            },
             instrument: {
                 type: Sequelize.STRING(255),
                 allowNull: false,
@@ -41,10 +28,6 @@ module.exports = class Instrument extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: true,
             },
-            digits: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-            },
         }, {
             sequelize,
             timestamps: true,
@@ -58,6 +41,6 @@ module.exports = class Instrument extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Instrument.hasMany(db.Symbol);
+        db.Instrument.belongsTo(db.Symbol);
     }
 }

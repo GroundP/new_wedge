@@ -7,14 +7,6 @@ module.exports = class Symbol extends Sequelize.Model {
                 type: Sequelize.STRING(45),
                 allowNull: false,
             },
-            lp: {
-                type: Sequelize.STRING(45),
-                allowNull: false,
-            },
-            lp_cd: {
-                type: Sequelize.INTEGER,
-                allowNull: true,
-            },
             contract_size: {
                 type: Sequelize.DOUBLE,
                 allowNull: false,
@@ -44,7 +36,7 @@ module.exports = class Symbol extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Symbol.hasMany(db.Lp);
-        db.Symbol.belongsTo(db.Instrument);
+        db.Symbol.belongsTo(db.Lp);
+        db.Symbol.hasMany(db.Instrument);
     }
 }

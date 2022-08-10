@@ -21,13 +21,17 @@
         <form action="/instrument/add" method="post">
           <div class="input-group">
             <tr>
-              <td><input type="text" name="BrokerSymbol" size="10" maxlength="10"></td>
-              <td><input type="text" name="InstrumentName" size="10" maxlength="15"></td>
-              <td><input type="number" name="PriceMarkup" size="5"></td>
-              <td><input type="number" name="OrderMarkup" size="5"></td>
-              <td><input type="number" name="MinVolume" maxlength="5"></td>
-              <td><input type="number" name="MaxSpread" size="5"></td>
-              <td><input type="number" name="MinSpread" size="5"></td>
+              <td><select name="symbolId">
+                {% for symbol in symbolValues %}
+                <option value="{{symbol.id}}">{{symbol.broker_symbol}}</option>
+                {% endfor %}
+              </select></td>
+              <td><input type="text" name="instrumentName" size="10" maxlength="15"></td>
+              <td><input type="number" name="priceMarkup" size="5"></td>
+              <td><input type="number" name="orderMarkup" size="5"></td>
+              <td><input type="number" name="minVolume" maxlength="5"></td>
+              <td><input type="number" name="maxSpread" size="5"></td>
+              <td><input type="number" name="minSpread" size="5"></td>
               <td><button type="submit" class="badge badge-success">Submit</button></td>
             </tr>
           </div>
@@ -74,7 +78,7 @@
                 <div class="control__indicator"></div>
               </label>
             </td>
-            <td>{{instrument.instrument}}</td>
+            <td>{{instrument.Symbol.broker_symbol}}</td>
             <td class="pl-0">
               <div class="d-flex align-items-center">
                 <a href="#" class="name">{{instrument.instrument}}</a>

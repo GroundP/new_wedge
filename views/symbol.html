@@ -9,11 +9,11 @@
     <br>
     <table class="table table-striped table-sm">
       <thead>
-        <th scope="col">Symbol</th>
+        <th scope="col">Lp Symbol</th>
         <th scope="col">Lp</th>
+        <th scope="col">Broker symbol</th>
         <th scope="col">Contract Size</th>
         <th scope="col">Multiplier</th>
-        <th scope="col">Broker symbol</th>
         <th scope="col">Digits</th>
         <th scope="col">/</th>
       </thead>
@@ -21,13 +21,17 @@
         <form action="/symbol/add" method="post">
           <div class="input-group">
             <tr>
-              <td><input id="symbol-lp_symbol" type="text" name="lp_symbol" size="10" maxlength="10"></td>
-              <td><input id="symbol-lp" type="text" name="lp" size="10" maxlength="15"></td>
-              <td><input id="symbol-contractSize" type="number" name="contract_size" size="5"></td>
-              <td><input id="symbol-multiplier" type="text" name="multiplier" size="10" maxlength="10"></td>
-              <td><input id="symbol-brokerSymbol" type="text" name="broker_symbol" size="10" maxlength="10"></td>
-              <td><input id="symbol-digits" type="number" name="digits" size="5"></td>
-              <td><button id="symbol-btn" type="submit" class="badge badge-success">Submit</button></td>
+              <td><input type="text" name="lpSymbol" size="10" maxlength="10"></td>
+              <td><select name="lpId">
+                {% for lp in lpValues %}
+                <option value="{{lp.id}}">{{lp.lp_name}}</option>
+                {% endfor %}
+              </select></td>
+              <td><input type="text" name="brokerSymbol" size="10" maxlength="10"></td>
+              <td><input type="number" name="contractSize" size="5"></td>
+              <td><input type="text" name="multiplier" size="10" maxlength="10"></td>
+              <td><input type="number" name="digits" size="5"></td>
+              <td><button type="submit" class="badge badge-success">Submit</button></td>
             </tr>
           </div>
         </form>
@@ -52,9 +56,9 @@
             </th>
             <th scope="col">Symbol</th>
             <th scope="col">Lp</th>
+            <th scope="col">Broker Symbol</th>
             <th scope="col">Contract Size</th>
             <th scope="col">Multiplier</th>
-            <th scope="col">Broker Symbol</th>
             <th scope="col">Digits</th>
             <th scope="col">
               <label class="custom-control ios-switch" style="position: relative; top: 10px;">
@@ -77,12 +81,12 @@
             <td>{{symbol.lp_symbol}}</td>
             <td class="pl-0">
               <div class="d-flex align-items-center">
-                <a href="#" class="name">{{symbol.lp}}</a>
+                <a href="#" class="name">{{symbol.Lp.lp_name}}</a>
               </div>
             </td>
+            <td>{{symbol.broker_symbol}}</td>
             <td>{{symbol.contract_size}}</td>
             <td>{{symbol.multiplier}}</td>
-            <td>{{symbol.broker_symbol}}</td>
             <td>{{symbol.digits}}</td>
             <td>
               <label class="custom-control ios-switch">
