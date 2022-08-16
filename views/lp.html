@@ -34,60 +34,49 @@
   <br><br>
   <div class="container">
     <h2 class="mb-3">LPs</h2>
-    <div class="table-responsive">
-      <table class="table table-striped custom-table">
-        <thead>
-          <tr>
-            <th scope="col">
-              <label class="control control--checkbox">
-                <input type="checkbox" class="js-check-all" />
-                <div class="control__indicator"></div>
-              </label>
-            </th>
-            <th scope="col">ID</th>
-            <th scope="col">LP Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">CSV Provide</th>
-            <th scope="col">
-              <label class="custom-control ios-switch" style="position: relative; top: 10px;">
-                <input type="checkbox" class="ios-switch-control-input js-ios-switch-all">
-                <span class="ios-switch-control-indicator"></span>
-              </label>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for lp in lpValues %}
+    <form action="/lp" method="post">
+      <input type="hidden" name="_method" value="DELETE"/>
+      <button type="submit">delete</button>
+      <div class="table-responsive">
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              <th scope="col">
+                <label class="custom-control ios-switch" style="position: relative; top: 10px;">
+                  <input type="checkbox" class="ios-switch-control-input js-ios-switch-all">
+                  <span class="ios-switch-control-indicator"></span>
+                </label>
+              </th>
+              <th scope="col">ID</th>
+              <th scope="col">LP Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">CSV Provide</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for lp in lpValues %}
 
-          <tr scope="row" class="active">
-            <td>
-              <label class="control control--checkbox">
-                <input type="checkbox" />
-                <div class="control__indicator"></div>
-              </label>
-            </td>
-            <td>{{lp.id}}</td>
-            <td class="pl-0">
-              <div class="d-flex align-items-center">
-                <a href="#" class="name">{{lp.lp_name}}</a>
-              </div>
-            </td>
-            <td>{{lp.description}}</td>
-            <td>{{lp.csv_provide}}</td>
-            <td>
-              <label class="custom-control ios-switch">
-                <input type="checkbox" class="ios-switch-control-input">
-                <span class="ios-switch-control-indicator edit_symbol" data-lp_symbol="{{ symbol.lp_symbol }}"
-                  data-lp="{{ symbol.lp }}" data-contract_size="{{ symbol.contract_size }}"
-                  data-multiplier="{{ symbol.multiplier }}" data-broker_symbol="{{ symbol.broker_symbol }}"
-                  data-digits="{{ symbol.digits }}"></span>
-              </label>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+            <tr scope="row" class="active">
+              <td>
+                <label class="custom-control ios-switch">
+                  <input type="checkbox" class="ios-switch-control-input" name="selected_{{lp.id}}">
+                  <span class="ios-switch-control-indicator edit_symbol"></span>
+                </label>
+              </td>
+              <td>{{lp.id}}</td>
+              <td class="pl-0">
+                <div class="d-flex align-items-center">
+                  <a href="#" class="name">{{lp.lp_name}}</a>
+                </div>
+              </td>
+              <td>{{lp.description}}</td>
+              <td>{{lp.csv_provide}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}

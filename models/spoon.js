@@ -3,17 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = class Spoon extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            cd: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                unique: true,
-            },
             mkd_log_level: {
                 type: Sequelize.STRING(45),
                 allowNull: false,
             },
             mkd_log_prices: {
-                type: Sequelize.STRING(45),
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
             mkd_spread_count: {
@@ -45,7 +40,7 @@ module.exports = class Spoon extends Sequelize.Model {
                 allowNull: false,
             },
             ord_cancel_noprice: {
-                type: Sequelize.STRING(45),
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
             service_host: {
@@ -58,7 +53,7 @@ module.exports = class Spoon extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             underscored: false,
             modelName: 'Spoon',
             tableName: 'spoon',

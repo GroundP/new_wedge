@@ -32,4 +32,25 @@ router.post('/add', async (req, res, next) => {
     }
 });
 
+router.delete('/', async (req, res, next) => {
+    console.log(req.body);
+    const { id, lp_name, description, csv_provide } = req.body;
+
+    try {
+        const exLp = await Lp.findOne({ where: { id } });
+        if (!exLp) {
+            return res.redirect('/delete?error=nonexist');
+        }
+
+        await Lp.delete({
+            id,
+        });
+        return res.redirect('/lp');
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+
+});
+
 module.exports = router;

@@ -20,8 +20,9 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     const {
-        mkd_log_level,
-        mkd_log_price,
+        mkdLogLevel,
+        // mkd_log_level,
+        mkdLogPrices,
         mkd_spread_count,
         mkd_spread_ratio,
         mkd_spread_interval,
@@ -29,19 +30,21 @@ router.post('/', async (req, res, next) => {
         mkd_min_spread_factor,
         ord_log_level,
         ord_duration,
-        ord_cancel_noprice,
+        ordCancel,
         service_host,
         service_port
     } = req.body;
 
+    console.log(req.body);
+
     try {
-        const exSpoon = await Spoon.findOne({ where: { cd: 1 } });
+        const exSpoon = await Spoon.findOne({ where: { id: 1 } });
         if (!exSpoon) {
             return res.redirect('/add?error=notexist');
         }
         await Spoon.update({
-            mkd_log_level,
-            mkd_log_price,
+            mkd_log_level: mkdLogLevel,
+            mkd_log_prices: mkdLogPrices ? true : false,
             mkd_spread_count,
             mkd_spread_ratio,
             mkd_spread_interval,
@@ -49,10 +52,10 @@ router.post('/', async (req, res, next) => {
             mkd_min_spread_factor,
             ord_log_level,
             ord_duration,
-            ord_cancel_noprice,
+            ord_cancel_noprice: ordCancel ? true : false,
             service_host,
             service_port
-        }, { where: { cd: 1 } });
+        }, { where: { id: 1 } });
 
         return res.redirect('/spoon');
     } catch (err) {

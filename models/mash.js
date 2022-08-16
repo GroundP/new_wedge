@@ -3,11 +3,6 @@ const Sequelize = require('sequelize');
 module.exports = class Mash extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            cd: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                unique: true,
-            },
             master: {
                 type: Sequelize.INTEGER(11),
                 allowNull: false,
