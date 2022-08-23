@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/spoon', spoonRouter);

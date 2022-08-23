@@ -34,17 +34,28 @@ router.post('/add', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
     console.log(req.body);
-    const { id, lp_name, description, csv_provide } = req.body;
+    const selectedKeys = Object.keys(req.body);
+
+    //res.send("<script>if(!confirm('OK?')){ history.back(); }</script>");
 
     try {
-        const exLp = await Lp.findOne({ where: { id } });
-        if (!exLp) {
-            return res.redirect('/delete?error=nonexist');
+
+        for (const key of selectedKeys) {
+            console.log(key);
+            const deleteId = key.substring(9);
+            console.log(deleteId);
+            const exLp = await Lp.findOne({ where: { id: deleteId } });
+            if (!exLp) {
+                return res.redirect('/delete?error=nonexist');
+            }
+
+            await Lp.destroy({
+                where: {
+                    id: deleteId,
+                }
+            });
         }
 
-        await Lp.delete({
-            id,
-        });
         return res.redirect('/lp');
     } catch (err) {
         console.error(err);

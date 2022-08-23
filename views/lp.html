@@ -34,9 +34,8 @@
   <br><br>
   <div class="container">
     <h2 class="mb-3">LPs</h2>
-    <form action="/lp" method="post">
-      <input type="hidden" name="_method" value="DELETE"/>
-      <button type="submit">delete</button>
+    <form action="/lp?_method=DELETE" method="post" name="lpDel">
+      <button type="submit" onclick="deleteCheck()">delete</button>
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>
@@ -59,7 +58,7 @@
             <tr scope="row" class="active">
               <td>
                 <label class="custom-control ios-switch">
-                  <input type="checkbox" class="ios-switch-control-input" name="selected_{{lp.id}}">
+                  <input type="checkbox" class="ios-switch-control-input" id = {{lp.id}} name="selected_{{lp.id}}">
                   <span class="ios-switch-control-indicator edit_symbol"></span>
                 </label>
               </td>
@@ -69,8 +68,8 @@
                   <a href="#" class="name">{{lp.lp_name}}</a>
                 </div>
               </td>
-              <td>{{lp.description}}</td>
-              <td>{{lp.csv_provide}}</td>
+              <td name="description">{{lp.description}}</td>
+              <td name="csvProvide">{{lp.csv_provide}}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -79,4 +78,15 @@
     </form>
   </div>
 </div>
+
+<script>
+  function deleteCheck() {
+    if ( !confirm("삭제하시겠습니까?") ){
+      history.back();
+    } else {
+      document.lpDel.submit();
+    }
+
+  }
+</script>
 {% endblock %}
