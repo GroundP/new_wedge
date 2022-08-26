@@ -5,9 +5,13 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-        const spoons = await Spoon.findAll({
-            //order: [['createdAt', 'DESC']],
-        });
+        //  const spoons = await Spoon.findAll({
+        //  });
+
+        const spoons = await Spoon.findAll({where : {id :1}});
+        if (!spoons) {
+            return res.redirect('/add?error=notexist');
+        }
         res.render('spoon', {
             title: 'new_wedge',
             spoonValues: spoons,
@@ -28,7 +32,7 @@ router.post('/', async (req, res, next) => {
         mkd_spread_interval,
         mkd_max_spread_factor,
         mkd_min_spread_factor,
-        ord_log_level,
+        ordLogLevel,
         ord_duration,
         ordCancel,
         service_host,
@@ -50,7 +54,7 @@ router.post('/', async (req, res, next) => {
             mkd_spread_interval,
             mkd_max_spread_factor,
             mkd_min_spread_factor,
-            ord_log_level,
+            ord_log_level: ordLogLevel,
             ord_duration,
             ord_cancel_noprice: ordCancel ? true : false,
             service_host,
@@ -67,13 +71,15 @@ router.post('/', async (req, res, next) => {
 
 router.get('/edit', async (req, res, next) => {
     try {
-        const spoons = await Spoon.findAll({
-        });
+        const spoons = await Spoon.findAll({where : {id :1}});
+
+        const logLevels = [ 'Debug', 'Info', 'Warning', 'Error' ];
 
         res.render('spoon', {
             title: 'new_wedge',
             spoonValues: spoons,
             edit_flag: true,
+            logLevels,
         });
     } catch (err) {
         console.error(err);

@@ -23,13 +23,12 @@
     <tbody>
         <tr>
           <td><select name="mkdLogLevel">
-            <option value="debug">Debug</option>
-            <option value="info">Info</option>
-            <option value="warning">Warning</option>
-            <option value="error">Error</option>
+            {% for logLevel in logLevels %}
+            <option value="{{logLevel}}" {% if spoon.mkd_log_level === "{{logLevel}}" %} selected {% endif %}>{{logLevel}}</option>
+            {% endfor %}
           </select></td>
 
-          <td><input type="checkbox" name="mkdLogPrices" {% if spoon.mkd_log_prices %} checked {% endif %} /></td>
+          <td><input type="checkbox" class="ios-switch-control-input" name="mkdLogPrices" {% if spoon.mkd_log_prices %} checked {% endif %} /></td>
           <td><input type="number" name="mkd_spread_count" value="{{spoon.mkd_spread_count}}" /></td>
           <td><input type="number" name="mkd_spread_ratio" value="{{spoon.mkd_spread_ratio}}" id="" /></td>
           <td><input type="number" name="mkd_spread_interval" value="{{spoon.mkd_spread_interval}}" id="" /></td>
@@ -47,9 +46,14 @@
       <th scope="col">cancel order for no price</th>
     </thead>
     <tr>
-      <td><input type="text" name="ord_log_level" value="{{spoon.ord_log_level}}" id="" /></td>
+        <td><select name="ordLogLevel">
+            {% for logLevel in logLevels %}
+            <option value="{{logLevel}}" {% if spoon.ord_log_level === "{{logLevel}}" %} selected {% endif %}>{{logLevel}}</option>
+            {% endfor %}
+          </select></td>
+
       <td><input type="number" name="ord_duration" value="{{spoon.ord_duration}}" id="" /></td>
-      <td><input type="checkbox" name="ordCancel" {% if spoon.ord_cancel_noprice %} checked {% endif %} /></td>
+      <td><input type="checkbox" class="ios-switch-control-input" name="ordCancel" {% if spoon.ord_cancel_noprice %} checked {% endif %} /></td>
     </tr>
   </table>
   <br/>
